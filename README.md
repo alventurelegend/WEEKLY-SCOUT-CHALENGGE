@@ -15,13 +15,6 @@ meraih leaderboard tertinggi.
 - Bugs     : "Memperbaiki Bug Login"
 - Readme   : "Menambahkan (Judul/Hal yang ditambahkan) ke Readme.md"
 
-## ✨ Features
-- 🚀 **Image Classification**: Predicts the type of flower from an uploaded image.
-- 🎨 **Modern Frontend**: Built with **React.js**, **Vite**, and **Tailwind CSS** for a fast and responsive UI.
-- 🧠 **Machine Learning Model**: Uses **TensorFlow** for accurate classification.
-- 🗄️ **Backend API**: Powered by **Express.js** to handle communication between the frontend.
-- 📊 **PostgreSQL Database**: Stores flower data.
-
 ## 🛠️ Tech Stack
 - **Frontend**: Javascript, Tailwind
 - **Backend**: PHP, Mysql
