@@ -1,0 +1,155 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(#00d9ff, #008299);
+  font-family: "roboto", sans-serif;
+}
+
+header {
+  background-color: white;
+  width: auto max-content;
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo h4 {
+  color: #319bff;
+}
+
+.logo h3 {
+  color: #002f94;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+}
+
+.btn1 {
+  padding: 10px;
+  border-radius: 50px;
+  border: 0;
+  background-color: #4895ef;
+  border: 1.5px solid #4895ef;
+  color: white;
+  width: 100px;
+  margin-right: -60px;
+  z-index: 2;
+  transition: border 0.3ms, background-color, 0.3ms ease-in;
+}
+
+.btn1:hover {
+  background-color: #007fc4;
+  border: 1.5px solid #007fc4;
+}
+
+.btn1:active {
+  background-color: #002f94;
+  border: 1.5px solid #002f94;
+}
+
+.btn2 {
+  padding: 10px;
+  border-radius: 50px;
+  border: 1.5px solid black;
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  width: 150px;
+  z-index: 1;
+  padding-left: 50px;
+  transition: color 0.3ms, background-color, 0.3ms ease-in;
+}
+
+.btn2:hover {
+  background-color: #e2e2e2;
+}
+
+.btn2:active {
+  background-color: #747474;
+  color: white;
+}
+
+.hero {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  margin-top: -100px;
+}
+
+.name {
+  margin-left: 90px;
+}
+
+.name h1 {
+  font-size: 5em;
+  font-weight: 900;
+  color: white;
+}
+.name p {
+  width: 90%;
+  color: #ffffff;
+  font-size: 1.2em;
+}
+
+.hero img {
+  margin-top: 200px;
+  margin-right: 60px;
+  overflow-x: hidden;
+}
+
+.line {
+  width: 100%;
+  background-color: white;
+  color: #007fc4;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: -4px;
+}
+
+.form-card {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-bottom: 100px;
+}
+
+.card {
+  width: 250px;
+  height: 300px;
+  background-color: white;
+  margin-top: 100px;
+  text-align: center;
+  border-radius: 15px;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+.card i {
+  margin-top: 70px;
+  margin-bottom: 10px;
+  font-size: 60px;
+  color: #219fff;
+}
+
+.card h4 {
+  margin-bottom: 20px;
+  color: #ffbb00;
+}
+
+.card p {
+  max-width: 60%;
+  margin: 0 auto;
+}
