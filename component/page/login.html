@@ -23,22 +23,23 @@
     ></script>
 
     <!-- LOGO TITLE -->
-    <link rel="icon" href="../../public/asset/WSC PNG.png" />
+    <link rel="icon" href="../../public/asset/WcsLogo.png" />
   </head>
   <body>
     <div class="container">
         <div class="login-card">
             <div class="login-header">
+              <img src="../../public/asset/WcsLogo.png" alt="" width="100px">
                 <h2>Form Login</h2>
             </div>
             <form class="login-form">
                 <div class="input-group">
                     <i class="fas fa-user"></i>
-                    <input type="text" placeholder="Username...." id="username">
+                    <input type="text" placeholder="Username...." id="username" required>
                 </div>
                 <div class="input-group">
                     <i class="fas fa-lock"></i>
-                    <input type="password" placeholder="Password...." id="password">
+                    <input type="password" placeholder="Password...." id="password" required>
                 </div>
                 <button type="submit" class="login-button">Login</button>
             </form>
@@ -48,5 +49,8 @@
         </div>
     </div>  
     </form>
+
+    <script src="../item/header2.js"></script>
+    <script src="../../public/js/login.js"></script>
   </body>
 </html>
