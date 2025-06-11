@@ -188,6 +188,18 @@ class Myheader extends HTMLElement {
         headerElement.classList.remove("header-scrolled");
       }
     });
+
+    if (btnLogin) {
+      btnLogin.addEventListener("click", () => {
+        window.location.href = "../../component/page/login.html";
+      });
+    }
+    if (btnRegis) {
+      btnRegis.addEventListener("click", () => {
+        console.log("Regitrasi dulu");
+        window.location.href = "../../component/page/registrasi.html";
+      });
+    }
   }
 }
 

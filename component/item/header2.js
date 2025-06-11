@@ -2,10 +2,8 @@ class Myheader extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
-
     
-    
-    this.nama = localStorage.getItem('loggedInUsername');
+    this.nama = localStorage.getItem("loggedInUsername");
 
     this.render();
   }
@@ -75,8 +73,8 @@ class Myheader extends HTMLElement {
           text-align: center;
           padding: 0.8rem 1rem;
           color: black;
-          width: 6.25rem;
-          margin-right: 3rem;
+          width: auto;
+          margin-right: 0.5rem;
           border: none;
           font-size: 1rem;
         }
@@ -170,16 +168,12 @@ class Myheader extends HTMLElement {
       </header>
     `;
 
-    
     const headerElement = this.shadowRoot.getElementById("main-header");
     const btnusername = this.shadowRoot.getElementById("username"); 
-    const btnlogout = this.shadowRoot.getElementById("btnout");
+    
+    
+    const btnlogout = this.shadowRoot.getElementById("btnout"); 
 
-    
-    
-    
-
-    
     window.addEventListener("scroll", () => {
       if (window.scrollY > 0) {
         headerElement.classList.add("header-scrolled");
@@ -189,14 +183,43 @@ class Myheader extends HTMLElement {
     });
 
     
-    if (btnlogout) {
-      btnlogout.addEventListener('click', () => {
-        localStorage.removeItem('loggedInUsername'); 
-        
-        window.location.href = '../../component/page/login.html'; 
+    
+    if (btnlogout) { 
+      btnlogout.addEventListener("click", function () {
+        Swal.fire({
+          title: "Apakah Anda yakin ingin logout?",
+          text: "Anda akan keluar dari sesi Anda saat ini.",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Ya, Logout!",
+          cancelButtonText: "Tidak",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            console.log("Pengguna mengkonfirmasi logout.");
+
+            
+            localStorage.removeItem("loggedInUsername"); 
+
+            Swal.fire({
+              title: "Berhasil Logout!",
+              text: "Anda telah berhasil keluar.",
+              icon: "success",
+              showConfirmButton: false,
+              timer: 1500,
+              timerProgressBar: true,
+            }).then(() => {
+              
+              window.location.href = "../../index.html";
+            });
+          } else {
+            console.log("Pengguna membatalkan logout.");
+            Swal.fire("Dibatalkan", "Anda tetap masuk.", "info");
+          }
+        });
       });
     }
   }
 }
-
 customElements.define("my-header", Myheader);

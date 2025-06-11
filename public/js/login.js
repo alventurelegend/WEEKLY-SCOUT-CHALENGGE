@@ -8,13 +8,23 @@ if (loginButton) {
     const username = usernameInput.value;
 
     if (username) {
-      localStorage.setItem("loggedInUsername", username);
+      Swal.fire({
+        title: "Login Sukses",
+        icon: "success",
+        timer: 2000,
+        showConfirmButton: false,
+      }).then(() => {
+        localStorage.setItem("loggedInUsername", username);
+        window.location.href = "../../component/page/dashboard.html";
+      });
     } else {
-      alert("Username tidak boleh kosong!");
+      Swal.fire({
+        title: "Silakan masukkan email & Password",
+        icon: "error",
+        timer: 2000,
+      });
       return;
     }
-
-    window.location.href = "../../component/page/dashboard.html";
   });
 } else {
   console.warn(
