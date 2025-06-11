@@ -77,6 +77,7 @@ class Myheader extends HTMLElement {
           margin-right: 0.5rem;
           border: none;
           font-size: 1rem;
+          background-color: transparent;
         }
 
         .btn2 {

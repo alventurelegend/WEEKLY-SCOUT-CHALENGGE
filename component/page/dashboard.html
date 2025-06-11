@@ -26,7 +26,38 @@
     <link rel="icon" href="../../public/asset/WcsLogo.png" />
   </head>
   <body>
-   <my-header></my-header>
+    <my-header></my-header>
+
+    <div class="account">
+      <h3>Informasi Akun</h3>
+      <div class="account-info">
+        <div class="info">
+          <div id="name">
+            <input
+              type="text"
+              placeholder="username"
+              value="Nama User"
+              id="username"
+            />
+            <input
+              type="text"
+              placeholder="gugus depan"
+              value="Nama Gudep"
+              id="gugusdepan"
+            />
+          </div>
+          <div id="poin">
+            <h3>Poin</h3>
+            <p>2900 </p>
+          </div>
+          <div class="history-poin">
+            <h3>Riwayat Poin</h3>
+            <div id="pointHistoryList" class="history-list"></div>
+            <a href="#">Cek Leadeboard..</a>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <script src="../item/header2.js"></script>
     <script src="../../public/js/dashboard.js"></script>
