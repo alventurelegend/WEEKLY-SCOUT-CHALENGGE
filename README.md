@@ -12,7 +12,7 @@ meraih leaderboard tertinggi.
   
 ## CONTOH PENGGUNAAN
 - Feat     : "Menambahkan Fitur Login"
-- Refactor : "Memperbaiki Gambar pada landingpage"
+- Refactor : "Memperbaiki tanpa merubah fungsi"
 - Bugs     : "Memperbaiki Bug Login"
 - Readme   : "Menambahkan (Judul/Hal yang ditambahkan) ke Readme.md"
 - Files    : "Menambahkan File/Folder (Nama File/Folder)"

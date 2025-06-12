@@ -2,7 +2,7 @@ class Myheader extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
-    
+
     this.nama = localStorage.getItem("loggedInUsername");
 
     this.render();
@@ -170,10 +170,9 @@ class Myheader extends HTMLElement {
     `;
 
     const headerElement = this.shadowRoot.getElementById("main-header");
-    const btnusername = this.shadowRoot.getElementById("username"); 
-    
-    
-    const btnlogout = this.shadowRoot.getElementById("btnout"); 
+    const btnusername = this.shadowRoot.getElementById("username");
+
+    const btnlogout = this.shadowRoot.getElementById("btnout");
 
     window.addEventListener("scroll", () => {
       if (window.scrollY > 0) {
@@ -183,9 +182,7 @@ class Myheader extends HTMLElement {
       }
     });
 
-    
-    
-    if (btnlogout) { 
+    if (btnlogout) {
       btnlogout.addEventListener("click", function () {
         Swal.fire({
           title: "Apakah Anda yakin ingin logout?",
@@ -200,8 +197,7 @@ class Myheader extends HTMLElement {
           if (result.isConfirmed) {
             console.log("Pengguna mengkonfirmasi logout.");
 
-            
-            localStorage.removeItem("loggedInUsername"); 
+            localStorage.removeItem("loggedInUsername");
 
             Swal.fire({
               title: "Berhasil Logout!",
@@ -211,8 +207,7 @@ class Myheader extends HTMLElement {
               timer: 1500,
               timerProgressBar: true,
             }).then(() => {
-              
-              window.location.href = "../../index.html";
+              window.location.href = "../../public/index.html";
             });
           } else {
             console.log("Pengguna membatalkan logout.");
