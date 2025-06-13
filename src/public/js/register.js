@@ -1,36 +1,54 @@
-const loginButton = document.querySelector('.regist-button');
+const registerButton = document.querySelector('.regist-button');
 
-if (loginButton) {
-  loginButton.addEventListener("click", function (event) {
+if (registerButton) {
+  registerButton.addEventListener("click", function (event) {
     event.preventDefault();
 
-    const usernameInput = document.getElementById("username");
-    const gudep = document.getElementById("gudep");
-    const username = usernameInput.value;
-    const gudepku = gudep.value;
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+    const gudep = document.getElementById("gudep").value;
 
-    if (username) {
+    if (!username || !password || !gudep) {
       Swal.fire({
-        title: "Registrasi Sukses",
-        icon: "success",
+        title: "Semua field wajib diisi!",
+        icon: "warning",
         timer: 2000,
         showConfirmButton: false,
-      }).then(() => {
-        localStorage.setItem("loggedInUsername", username);
-        localStorage.setItem("GudepUser", gudepku);
-        window.location.href = "../../component/page/login.html";
-      });
-    } else {
-      Swal.fire({
-        title: "Silakan masukkan email, Password & Gudep",
-        icon: "error",
-        timer: 2000,
       });
       return;
     }
+
+    fetch("../../../api/backend/registrasi.php", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ username, password, gudep }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.status === "success") {
+          Swal.fire({
+            title: "Registrasi Berhasil!",
+            icon: "success",
+            timer: 2000,
+            showConfirmButton: false,
+          }).then(() => {
+            window.location.href = "../page/login.html";
+          });
+        } else {
+          Swal.fire({
+            title: "Gagal!",
+            text: data.message,
+            icon: "error",
+          });
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+        Swal.fire({
+          title: "Error",
+          text: "Terjadi kesalahan saat mengirim data",
+          icon: "error",
+        });
+      });
   });
-} else {
-  console.warn(
-    "Elemen dengan class 'login-button' tidak ditemukan di halaman."
-  );
 }
