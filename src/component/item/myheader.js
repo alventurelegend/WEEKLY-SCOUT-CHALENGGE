@@ -164,7 +164,7 @@ class Myheader extends HTMLElement {
       </style>
       <header id="main-header">
         <div class="logo">
-          <img src="../../public/asset/WcsLogo.png" alt="Logo" width="100px" />
+          <img src="public/asset/WcsLogo.png" alt="Logo" width="100px" />
           <div class="title">
             <h4>WEKLY SCOUT</h4>
             <h3>CHALENGGE</h3>
@@ -191,13 +191,13 @@ class Myheader extends HTMLElement {
 
     if (btnLogin) {
       btnLogin.addEventListener("click", () => {
-        window.location.href = "../../component/page/login.html";
+        window.location.href = "../../../src/component/page/login.html";
       });
     }
     if (btnRegis) {
       btnRegis.addEventListener("click", () => {
         console.log("Regitrasi dulu");
-        window.location.href = "../../component/page/registrasi.html";
+        window.location.href = "../../../src/component/page/registrasi.html";
       });
     }
   }

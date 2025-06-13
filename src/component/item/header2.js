@@ -207,7 +207,7 @@ class Myheader extends HTMLElement {
               timer: 1500,
               timerProgressBar: true,
             }).then(() => {
-              window.location.href = "../../public/index.html";
+              window.location.href = "../../../src/index.html";
             });
           } else {
             console.log("Pengguna membatalkan logout.");
