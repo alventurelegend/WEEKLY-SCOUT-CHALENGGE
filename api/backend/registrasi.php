@@ -1,6 +1,6 @@
 <?php
 header("Content-Type: application/json");
-require 'db_config.php';
+require __DIR__ . '/db_config.php';
 
 // Ambil data dari request
 $data = json_decode(file_get_contents("php://input"), true);
