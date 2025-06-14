@@ -191,7 +191,7 @@ class Myheader extends HTMLElement {
 
     if (btnLogin) {
       btnLogin.addEventListener("click", () => {
-        window.location.href = "../../component/page/login.html";
+        window.location.href = "../../../src/component/page/login.html";
       });
     }
     if (btnRegis) {
