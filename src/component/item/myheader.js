@@ -191,13 +191,13 @@ class Myheader extends HTMLElement {
 
     if (btnLogin) {
       btnLogin.addEventListener("click", () => {
-        window.location.href = "../../../src/component/page/login.html";
+        window.location.href = "/component/page/login.html";
       });
     }
     if (btnRegis) {
       btnRegis.addEventListener("click", () => {
         console.log("Regitrasi dulu");
-        window.location.href = "../../../src/component/page/registrasi.html";
+        window.location.href = "../../component/page/registrasi.html";
       });
     }
   }
