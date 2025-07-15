@@ -3,7 +3,7 @@ class Myheader extends HTMLElement {
     super();
     this.attachShadow({ mode: "open" });
 
-    this.nama = localStorage.getItem("loggedInUsername");
+    this.nama = localStorage.getItem("namauser");
 
     this.render();
   }
@@ -196,9 +196,7 @@ class Myheader extends HTMLElement {
         }).then((result) => {
           if (result.isConfirmed) {
             console.log("Pengguna mengkonfirmasi logout.");
-
-            localStorage.removeItem("loggedInUsername");
-
+            localStorage.clear();
             Swal.fire({
               title: "Berhasil Logout!",
               text: "Anda telah berhasil keluar.",

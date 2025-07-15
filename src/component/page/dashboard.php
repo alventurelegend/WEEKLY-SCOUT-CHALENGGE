@@ -1,3 +1,18 @@
+<?php 
+    include '../../../api/connect.php';
+    $nameli = $_GET['username'];
+
+    $syntaks = "SELECT poin FROM user WHERE username = '$nameli'";
+    $getpoin = mysqli_query($koneksi, $syntaks);
+    $nilai = mysqli_fetch_array($getpoin);
+
+    if($nilai) {
+      echo 'Berhasil mengambil Poin dari' . $nameli . 'dan poin nya adalah' . $nilai;
+    } else {
+      echo 'error';
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -33,22 +48,18 @@
       <div class="account-info">
         <div class="info">
           <div id="name">
+            <form action="dashboard.php" method="post">
             <input
               type="text"
               placeholder="username"
-              value="Nama User"
-              id="username"
+              value="nama"
+              name="username"
             />
-            <input
-              type="text"
-              placeholder="gugus depan"
-              value="Nama Gudep"
-              id="gugusdepan"
-            />
+            </form>
           </div>
           <div id="poin">
             <h3>Poin</h3>
-            <p class="poin-user">2900</p>
+            <h1><?php $nilai ?></h1>
           </div>
           <div class="history-poin">
             <h3>Riwayat Poin</h3>
@@ -61,7 +72,16 @@
     <h2 id="batas">Chalengge</h2>
     <div id="event" class="week-event"></div>
     <h2 id="batas">Submit Your Chalengge</h2>
-    <challenge-submit-form></challenge-submit-form>
+    <iframe
+      src="https://docs.google.com/forms/d/e/1FAIpQLScwuyQlrnk1XuUtGoxQdl7vMyE7mJpyy32za73iyX-X2RR-GQ/viewform?embedded=true"
+      width="1920"
+      height="953"
+      frameborder="0"
+      marginheight="0"
+      marginwidth="0"
+      >Memuat…</iframe
+    >
+
     <footer>
       <p>
         &copy; 2025 Weekly Scout Challenge by DKR Sidoharjo. Hak Cipta

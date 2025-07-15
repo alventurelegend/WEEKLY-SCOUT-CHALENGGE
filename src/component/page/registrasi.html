@@ -32,20 +32,17 @@
               <img src="../../public/asset/WcsLogo.png" alt="" width="100px">
                 <h2>Form Registrasi</h2>
             </div>
-            <form class="login-form" action="../../../api/registrasi.php" method="POST">
-                <div class="input-group">
-                    <i class="fas fa-user"></i>
-                    <input type="text" name="user" placeholder="Username...." id="username" required>
-                </div>
-                <div class="input-group">
-                    <i class="fas fa-lock"></i>
-                    <input type="password" name="password" placeholder="Password...." id="password" required>
-                </div>
-                <div class="input-group">
-                    <i class="fas fa-lock"></i>
-                    <input type="text" name="gudep" placeholder="Gugus Depan..." id="gudep" required>
-                </div>
-                <button type="submit" class="regist-button">Daftar</button>
+           <form class="login-form">
+              <div class="input-group">
+                <input type="text" name="user" placeholder="Username..." id="user" required>
+              </div>
+              <div class="input-group">
+                <input type="password" name="password" placeholder="Password..." id="password" required>
+              </div>
+              <div class="input-group">
+                <input type="text" name="gudep" placeholder="Gugus Depan..." id="gudep" required>
+              </div>
+              <button type="submit" class="regist-button">Daftar</button>
             </form>
             <div class="register-link">
                 Sudah Punya akun? <a href="../page/login.html">Login</a>

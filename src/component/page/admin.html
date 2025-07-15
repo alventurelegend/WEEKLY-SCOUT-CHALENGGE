@@ -9,8 +9,9 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
+    <link rel="icon" href="../../public/asset/WcsLogo.png" />
   </head>
-  <body class="bg-gray-100 text-gray-800 min-h-screen flex flex-col">
+  <body class="bg-gray-100 te xt-gray-800 min-h-screen flex flex-col">
     <!-- Header (Mobile Only) -->
     <header
       class="md:hidden bg-blue-800 text-white p-4 flex justify-between items-center"
@@ -30,7 +31,12 @@
         class="w-64 bg-gradient-to-b from-cyan-400 to-cyan-700 text-white p-6 space-y-6 fixed md:static z-40 top-0 left-0 h-screen md:h-auto transform -translate-x-full md:translate-x-0 transition-transform duration-200 ease-in-out overflow-y-auto"
       >
         <div class="hidden md:block mb-8 flex">
-          <img src="../../public/asset/WcsLogo.png" alt="Gambar" width="50px" class="center"/>
+          <img
+            src="../../public/asset/WcsLogo.png"
+            alt="Gambar"
+            width="50px"
+            class="center"
+          />
           <h1 class="text-2xl font-bold">Dashboard Admin</h1>
         </div>
         <nav class="space-y-4">
@@ -109,22 +115,29 @@
               <i class="fas fa-plus-circle mr-2 text-green-600"></i>Tambah Event
               Baru
             </h3>
-            <form class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <form
+              class="grid grid-cols-1 md:grid-cols-2 gap-4"
+              action="eventadd.php"
+              method="POST"
+            >
               <input
                 type="text"
                 placeholder="Nama Event"
                 class="border p-2 rounded"
+                name="nama"
               />
               <input
                 type="number"
                 placeholder="Poin Event"
                 class="border p-2 rounded"
+                name="poin"
               />
               <textarea
                 placeholder="Deskripsi Event"
                 class="border p-2 rounded md:col-span-2"
+                name="deskripsi"
               ></textarea>
-              <input type="date" class="border p-2 rounded" />
+              <input type="date" class="border p-2 rounded" name="date" />
               <button
                 type="submit"
                 class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 md:col-span-2"
@@ -165,17 +178,13 @@
               Challenge
             </h3>
             <table class="min-w-full text-left border">
-              <thead class="bg-gray-100">
-                <tr>
-                  <th class="p-2">Nama</th>
-                  <th class="p-2">Gudep</th>
-                  <th class="p-2">Link Konten</th>
-                </tr>
-              </thead>
               <tbody>
                 <tr class="text-center">
                   <td class="p-4" colspan="3">
-                    Belum ada data pengirim challenge.
+                    <a
+                      href="https://docs.google.com/spreadsheets/d/1mvr4Z-L00lfeNOgOXfrddu7FpWGu9d7GVkusC4HphLA/edit?resourcekey=&gid=494535634#gid=494535634"
+                      >Klik disini</a
+                    >
                   </td>
                 </tr>
               </tbody>

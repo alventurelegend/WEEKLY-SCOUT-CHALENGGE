@@ -1,25 +1,4 @@
-const pointHistoryData = [
-  {
-    description: "Content creator",
-    points: 250,
-  },
-  {
-    description: "Pengabdian masyarakat",
-    points: 1500,
-  },
-  {
-    description: "Edukasi pramuka",
-    points: 100,
-  },
-  {
-    description: "Daily Checkin",
-    points: 150,
-  },
-  {
-    description: "Mengikuti lomba kebersihan",
-    points: 500,
-  },
-];
+const pointHistoryData = [];
 
 const pointHistoryList = document.getElementById("pointHistoryList");
 
@@ -28,7 +7,7 @@ function displayPointHistory(data) {
 
   if (data.length === 0) {
     pointHistoryList.innerHTML =
-      '<div class="no-data-message">Tidak ada riwayat poin yang tersedia.</div>';
+      '<div class="no-data-message">Fitur Poin akan segera hadir...</div>';
     return;
   }
 

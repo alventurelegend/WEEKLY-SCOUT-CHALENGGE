@@ -1,23 +1,36 @@
-<?php 
-    $username = $_POST['user'];
-    $password = $_POST['password'];
-    $gudep = $_POST['gudep'];
-    $level = 'user';
-    $encrypt = md5($password);
+    <?php 
+        header("Content-Type: application/json");
 
-    include 'connect.php';
+        $nama = $_POST['user'];
+        $pwd = $_POST['password'];
+        $encrypt = md5($pwd);
+        $gudep = $_POST['gudep'];
+        $poin = 0;
+        include 'connect.php';
 
-    //VALIDASI JIKA ADA USERNAME YANG SAMA MAKA OPERASI INSERT DIGAGALKAN
-    $validate = "SELECT username FROM user WHERE username = '$username'";
-    $sqlchecking = mysqli_query($koneksi, $validate);
-    //SINTAKS QUERY INSERT KE DALAM DATABASE
-    $query = "INSERT INTO user (username, password, level, gudep) VALUES ('$username', '$encrypt', '$level', '$gudep')";
 
-    //JIKA USERNAME SUDAH DIDAFTARKAN MAKA HASILNYA PASTI >0 NAH KALAU MASIH 0 ALIAS BELUM DIPAKAI MAKA BERHASIL REGISTRASI
-    if($sqlchecking->num_rows > 0) {
-        echo "Username sudah dipakai";
-    } else {
-         $sqlinsert = mysqli_query($koneksi, $query);
-         echo "Berhasil Registrasi";
-    }
-?>
+        $cek = "SELECT * FROM user WHERE username = '$nama'";
+        $run = mysqli_query($koneksi, $cek);
+        $hasil = mysqli_fetch_array($run);
+
+        if($hasil) {
+            echo json_encode([
+            "status" => "error",
+            "message" => "Username sudah digunakan!"
+        ]);
+        } else {
+            $syntaks = "INSERT INTO user (username, password, level, gudep, poin) VALUES ('$nama', '$encrypt', 'user', '$gudep', $poin)";
+            $input = mysqli_query($koneksi, $syntaks);
+            if ($input) {
+                echo json_encode([
+                    "status" => "success",
+                    "message" => "Sukses registrasi"
+                ]);
+            } else {
+                echo json_encode([
+                    "status" => "error",
+                    "message" => "Registrasi gagal insert"
+                ]);
+            }
+        }
+    ?>

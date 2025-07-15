@@ -1,21 +1,32 @@
-<?php
-    $name = $_POST['loguser'];
-    $pass = $_POST['passlog'];
-    $hashing = md5($pass);
+    <?php 
+        header("Content-Type: application/json");
 
-    include 'connect.php';
+        $logname = $_POST['loguser'];
+        $logpass = $_POST['passlog'];
+        $logencrypt = md5($logpass);
+        include 'connect.php';
 
-    $selecteduser = "SELECT * FROM user WHERE username = '$name'";
-    $result = mysqli_query($koneksi, $selecteduser);
-    $data = mysqli_fetch_array($result);
 
-    if($result) {
-        if($hashing === $data['password']) {
-            if($data['level'] === 'user' ) {
-                header('location: ../src/component/page/login.html');
-            } else if($data['level'] === 'admin'){
-                header('location: ../src/component/page/admin.html');
-            }
+        $cek = "SELECT * FROM user WHERE username = '$logname'";
+        $run = mysqli_query($koneksi, $cek);
+        $hasil = mysqli_fetch_array($run);
+
+        if($hasil) {
+            if($logencrypt === $hasil['password']) {
+                echo json_encode([
+                "status" => "success",
+                "message" => "Data ditemukan"
+                ]);
+            } else {
+                echo json_encode([
+                "status" => "passerror",
+                "message" => "Password salah"
+                ]);
+                }
+        } else {
+                echo json_encode([
+                "status" => "EmailError",
+                "message" => "Email salah"
+        ]);
         }
-    }
-?>
+    ?>

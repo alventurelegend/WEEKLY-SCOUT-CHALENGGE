@@ -1,6 +1,14 @@
-const name = localStorage.getItem("loggedInUsername");
-const gudep = localStorage.getItem("GudepUser");
+const nameuser = localStorage.getItem("namauser");
+const usernameElement = document.getElementById("username");
 
-username.value = `Nama User : ${name}`;
-gugusdepan.value = `Gudep : ${gudep}`;
-
+if (nameuser) {
+  //CEK APAKAH LocalStorage ada
+  console.log("Selamat datang", nameuser); //JIKA ADA TAMPILKAN PESAN
+  if (usernameElement) {
+    //CEK LAGI APAKAH DI USERNAME ADA ISINYA
+    usernameElement.value = `Nama pengguna: ${nameuser}`; //JIKA ADA TAMPILKAN
+  }
+} else {
+  //JIKA TIDAK ADA KEMBALIKAN KE HALAMAN LOGIN
+  window.location.href = "../../component/page/login.html";
+}

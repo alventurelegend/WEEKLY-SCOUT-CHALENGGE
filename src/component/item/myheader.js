@@ -197,7 +197,7 @@ class Myheader extends HTMLElement {
     if (btnRegis) {
       btnRegis.addEventListener("click", () => {
         window.location.href =
-          "/src/component/page/registrasi.html";
+          "/WEEKLY-SCOUT-CHALENGGE/src/component/page/registrasi.html";
       });
     }
   }

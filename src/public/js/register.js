@@ -1,111 +1,54 @@
-<<<<<<< HEAD
-const registerButton = document.querySelector('.regist-button');
+console.log("Js dimuat");
 
-if (registerButton) {
-  registerButton.addEventListener("click", function (event) {
-    event.preventDefault();
+const form = document.querySelector(".login-form");
 
-    const username = document.getElementById("username").value;
-    const password = document.getElementById("password").value;
-    const gudep = document.getElementById("gudep").value;
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
+  console.log("Form disubmit");
 
-    if (!username || !password || !gudep) {
-      Swal.fire({
-        title: "Semua field wajib diisi!",
-        icon: "warning",
-        timer: 2000,
-        showConfirmButton: false,
-      });
-      return;
-    }
+  const formData = new FormData(this);
 
-    fetch("../../../api/backend/registrasi.php", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ username, password, gudep }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.status === "success") {
-          Swal.fire({
-            title: "Registrasi Berhasil!",
-            icon: "success",
-            timer: 2000,
-            showConfirmButton: false,
-          }).then(() => {
-            window.location.href = "../page/login.html";
-          });
-        } else {
-          Swal.fire({
-            title: "Gagal!",
-            text: data.message,
-            icon: "error",
-          });
-        }
-      })
-      .catch((err) => {
-        console.error(err);
-        Swal.fire({
-          title: "Error",
-          text: "Terjadi kesalahan saat mengirim data",
-          icon: "error",
-        });
-      });
-  });
-}
-=======
-const loginButton = document.querySelector(".regist-button");
-
-loginButton.addEventListener("click", function (event) {
-  event.preventDefault();
-
-  const username = document.getElementById("username").value;
-  const password = document.getElementById("password").value;
-  const gudep = document.getElementById("gudep").value;
-
-  if (!username || !password || !gudep) {
-    Swal.fire({
-      title: "Error",
-      text: "Isi semua field!",
-      icon: "error",
-    });
-    return;
-  }
-
-  fetch("http://localhost/WEEKLY-SCOUT-CHALENGGE/api/backend/registrasi.php", {
+  fetch("../../../api/registrasi.php", {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ username, password, gudep }),
+    body: formData,
   })
-    .then((response) => response.json())
+    .then((res) => {
+      if (!res.ok) {
+        throw new Error("Server error");
+      }
+      return res.json();
+    })
     .then((data) => {
+      console.log("Respon dari PHP:", data);
       if (data.status === "success") {
         Swal.fire({
-          title: "Sukses",
-          text: data.message,
           icon: "success",
-        }).then(() => {
-          localStorage.setItem("loggedInUsername", username);
-          localStorage.setItem("GudepUser", gudep);
-          window.location.href = "../page/login.html";
+          title: "Registrasi Berhasil!",
+          text: "Registrasi Berhasil",
+          confirmButtonText: "OK",
+          timer: 2000,
+          didClose: () => {
+            window.location.href = "../../component/page/login.html";
+          },
         });
+
+        this.reset();
       } else {
         Swal.fire({
-          title: "Gagal",
-          text: data.message,
           icon: "error",
+          title: "Username dipakai",
+          text: "Silakan gunakan username yang lain",
+          confirmButtonText: "OK",
         });
       }
     })
     .catch((err) => {
-      console.error(err);
+      console.error("Gagal kirim:", err);
       Swal.fire({
-        title: "Error",
-        text: "Terjadi kesalahan saat mengirim data.",
         icon: "error",
+        title: "Terjadi kesalahan!",
+        text: "Coba lagi nanti.",
+        confirmButtonText: "Tutup",
       });
     });
 });
->>>>>>> 77c258c5454c4cc80bc3e5cf582adb5e421da575

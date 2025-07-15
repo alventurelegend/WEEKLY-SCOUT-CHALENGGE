@@ -159,17 +159,20 @@ h3::after {
   color: #666;
 }
 
+#poin small {
+  color:#686868;
+  font-weight: 350;
+}
+
 #batas {
   color: white;
   text-align: center;
   margin-top: 2rem;
 }
 
-challenge-submit-form {
-  width: 80%;
-  margin: 0 auto;
-  margin-top: 2rem;
-  margin-bottom: 4rem;
+iframe {
+width: 100%;
+margin-top: 20px;
 }
 
 footer {
