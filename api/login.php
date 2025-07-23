@@ -6,7 +6,6 @@
         $logencrypt = md5($logpass);
         include 'connect.php';
 
-
         $cek = "SELECT * FROM user WHERE username = '$logname'";
         $run = mysqli_query($koneksi, $cek);
         $hasil = mysqli_fetch_array($run);
@@ -28,5 +27,7 @@
                 "status" => "EmailError",
                 "message" => "Email salah"
         ]);
+        exit();
         }
+        
     ?>

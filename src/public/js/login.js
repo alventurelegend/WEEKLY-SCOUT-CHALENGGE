@@ -20,8 +20,11 @@ form.addEventListener("submit", function (e) {
     .then((data) => {
       console.log("Respon dari PHP:", data);
       if (data.status === "success") {
-        localStorage.setItem("namauser", nama.value);
+        // MENGAMBIL NAMA
+        const nameuser = nama.value;
+        localStorage.setItem("namauser", nameuser);
         console.log("Menampilkan", localStorage);
+        // SWALL FIRE
         Swal.fire({
           icon: "success",
           title: "Login Berhasil",
@@ -29,7 +32,9 @@ form.addEventListener("submit", function (e) {
           confirmButtonText: "OK",
           timer: 2000,
         }).then(() => {
-          window.location.href = "../../component/page/dashboard.php";
+          window.location.href =
+            "../../component/page/dashboard.php?username=" +
+            encodeURIComponent(nameuser);
         });
 
         this.reset();

@@ -127,7 +127,7 @@ class LeaderboardDisplay extends HTMLElement {
         try {
             // Data Dummy (ganti ini dengan data dari API Anda di masa depan)
             const dummyData = [
-                { username: "Ch Alga Praditya", gudep: "SMKN 2 Sragen", poin: 2500 },
+                { username: "Aradhea Ichwan Hanif Widodo", gudep: "SMKN 2 Sragen", poin: 2500 },
                 { username: "Faisal Huda", gudep: "SMKN 1 Plupuh", poin: 2430 },
                 { username: "Fairuz Ahamad Husain", gudep: "SMAN 3 Sragen", poin: 2400 },
                 { username: "Alviansyah Renonda Putra U", gudep: "SMA Kalijaga 2", poin: 1920 },
