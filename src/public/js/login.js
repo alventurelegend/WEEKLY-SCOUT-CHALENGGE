@@ -52,6 +52,22 @@ form.addEventListener("submit", function (e) {
           text: "Silakan gunakan Email yang valid",
           confirmButtonText: "OK",
         });
+      } else if (data.status === "admin") {
+        const nameuser = nama.value;
+        localStorage.setItem("namauser", nameuser);
+        console.log("Menampilkan", localStorage);
+        // SWALL FIRE
+        Swal.fire({
+          icon: "success",
+          title: "Login Admin Berhasil",
+          text: "Kamu akan segera berpindah halaman...",
+          confirmButtonText: "OK",
+          timer: 2000,
+        }).then(() => {
+          window.location.href = "../../component/page/admin.html";
+        });
+
+        this.reset();
       }
     })
     .catch((err) => {

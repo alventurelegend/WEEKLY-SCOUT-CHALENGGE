@@ -1,11 +1,11 @@
 // leaderboard.js
 
 class LeaderboardDisplay extends HTMLElement {
-    constructor() {
-        super();
-        this.attachShadow({ mode: 'open' });
+  constructor() {
+    super();
+    this.attachShadow({ mode: "open" });
 
-        this.shadowRoot.innerHTML = `
+    this.shadowRoot.innerHTML = `
             <style>
                 /* CSS untuk Leaderboard Component */
                 :host {
@@ -107,66 +107,61 @@ class LeaderboardDisplay extends HTMLElement {
                 </ul>
             </div>
         `;
+  }
+
+  // Dipanggil ketika elemen ditambahkan ke DOM
+  connectedCallback() {
+    this._fetchLeaderboardData();
+  }
+
+  async _fetchLeaderboardData() {
+    const leaderboardList = this.shadowRoot.querySelector(".leaderboard-list");
+    const loadingMessage = this.shadowRoot.querySelector(".loading-message");
+
+    // Sembunyikan pesan loading
+    if (loadingMessage) {
+      loadingMessage.style.display = "block";
+      leaderboardList.innerHTML = ""; // Kosongkan list sebelumnya
     }
 
-    // Dipanggil ketika elemen ditambahkan ke DOM
-    connectedCallback() {
-        this._fetchLeaderboardData();
+    //CARA MEMASUKAN EVENT DARI DATABASE KE HTML
+    try {
+      const response = await fetch(
+        "http://localhost/WEEKLY-SCOUT-CHALENGGE/api/leaderboard.php"
+      );
+      const data = await response.json();
+
+      if (data.error) {
+        throw new Error(data.error);
+      }
+
+      this._renderLeaderboard(data);
+    } catch (error) {
+      console.error("Error fetching leaderboard data:", error);
+      leaderboardList.innerHTML =
+        '<p style="color: red; text-align: center;">Gagal memuat leaderboard. Silakan coba lagi nanti.</p>';
+    } finally {
+      if (loadingMessage) {
+        loadingMessage.style.display = "none";
+      }
+    }
+  }
+  ////////////////////////////////////////////
+
+  _renderLeaderboard(data) {
+    const leaderboardList = this.shadowRoot.querySelector(".leaderboard-list");
+    leaderboardList.innerHTML = ""; // Kosongkan list sebelum diisi
+
+    if (data.length === 0) {
+      leaderboardList.innerHTML =
+        '<p style="text-align: center; color: #666;">Belum ada data leaderboard.</p>';
+      return;
     }
 
-    async _fetchLeaderboardData() {
-        const leaderboardList = this.shadowRoot.querySelector('.leaderboard-list');
-        const loadingMessage = this.shadowRoot.querySelector('.loading-message');
-
-        // Sembunyikan pesan loading
-        if (loadingMessage) {
-            loadingMessage.style.display = 'block';
-            leaderboardList.innerHTML = ''; // Kosongkan list sebelumnya
-        }
-
-        try {
-            // Data Dummy (ganti ini dengan data dari API Anda di masa depan)
-            const dummyData = [
-                { username: "Aradhea Ichwan Hanif Widodo", gudep: "SMKN 2 Sragen", poin: 2500 },
-                { username: "Faisal Huda", gudep: "SMKN 1 Plupuh", poin: 2430 },
-                { username: "Fairuz Ahamad Husain", gudep: "SMAN 3 Sragen", poin: 2400 },
-                { username: "Alviansyah Renonda Putra U", gudep: "SMA Kalijaga 2", poin: 1920 },
-                { username: "Revaldo Andri Putra Utami", gudep: "SMKN 2 Kedung...", poin: 1850 },
-                { username: "Budi Santoso", gudep: "SMPN 1 Jakarta", poin: 1500 },
-                { username: "Citra Dewi", gudep: "SMA 1 Bandung", poin: 1450 },
-                { username: "Doni Pratama", gudep: "SDN 5 Surabaya", poin: 1300 },
-                { username: "Eka Sari", gudep: "Pramuka Mandiri", poin: 1200 },
-                { username: "Fitriani", gudep: "Gudep Ceria", poin: 1100 },
-            ];
-
-            // Urutkan data berdasarkan poin dari tertinggi ke terendah (penting untuk leaderboard)
-            dummyData.sort((a, b) => b.poin - a.poin);
-
-            this._renderLeaderboard(dummyData);
-
-        } catch (error) {
-            console.error('Error fetching leaderboard data:', error);
-            leaderboardList.innerHTML = '<p style="color: red; text-align: center;">Gagal memuat leaderboard. Silakan coba lagi nanti.</p>';
-        } finally {
-            if (loadingMessage) {
-                loadingMessage.style.display = 'none'; // Selalu sembunyikan pesan loading
-            }
-        }
-    }
-
-    _renderLeaderboard(data) {
-        const leaderboardList = this.shadowRoot.querySelector('.leaderboard-list');
-        leaderboardList.innerHTML = ''; // Kosongkan list sebelum diisi
-
-        if (data.length === 0) {
-            leaderboardList.innerHTML = '<p style="text-align: center; color: #666;">Belum ada data leaderboard.</p>';
-            return;
-        }
-
-        data.forEach((item, index) => {
-            const listItem = document.createElement('li');
-            listItem.classList.add('leaderboard-item');
-            listItem.innerHTML = `
+    data.forEach((item, index) => {
+      const listItem = document.createElement("li");
+      listItem.classList.add("leaderboard-item");
+      listItem.innerHTML = `
                 <div class="leaderboard-rank">${index + 1}.</div>
                 <div class="leaderboard-details">
                     <div class="leaderboard-username">${item.username}</div>
@@ -174,10 +169,10 @@ class LeaderboardDisplay extends HTMLElement {
                 </div>
                 <div class="leaderboard-score">${item.poin}</div>
             `;
-            leaderboardList.appendChild(listItem);
-        });
-    }
+      leaderboardList.appendChild(listItem);
+    });
+  }
 }
 
 // Daftarkan Web Component
-customElements.define('leaderboard-display', LeaderboardDisplay);
+customElements.define("leaderboard-display", LeaderboardDisplay);

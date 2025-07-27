@@ -35,7 +35,7 @@ mysqli_close($koneksi);
     <title>Dashboard Menu</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
     <link rel="stylesheet" href="../../public/css/dashboard.css" />
-    <link rel="icon" href="../../../public/asset/WcsLogo.png" />
+    <link rel="icon" href="../../public/asset/WcsLogo.png" />
 </head>
 
 
@@ -64,14 +64,10 @@ mysqli_close($koneksi);
     <h2 id="batas">Chalengge</h2>
     <div id="event" class="week-event"></div>
     <h2 id="batas">Submit Your Chalengge</h2>
-    <iframe
-        src="https:
-        width="1920"
-        height="953"
-        frameborder="0"
-        marginheight="0"
-        marginwidth="0"
-        >Memuat…
+
+    <!-- FORM INPUT CHALENGGE -->
+    <iframe 
+    src="https://docs.google.com/forms/d/e/1FAIpQLScwuyQlrnk1XuUtGoxQdl7vMyE7mJpyy32za73iyX-X2RR-GQ/viewform?embedded=true" width="1920" height="953" frameborder="0" marginheight="0" marginwidth="0">Memuat…
     </iframe>
 
     <footer>

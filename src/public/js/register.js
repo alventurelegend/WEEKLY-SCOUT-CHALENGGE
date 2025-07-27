@@ -1,5 +1,3 @@
-console.log("Js dimuat");
-
 const form = document.querySelector(".login-form");
 
 form.addEventListener("submit", function (e) {

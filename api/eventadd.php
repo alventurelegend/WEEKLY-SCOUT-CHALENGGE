@@ -1,19 +1,28 @@
 <?php
 header("Content-Type: application/json");
 
-$nama = $_POST['nama'];
-$poin = $_POST['poin'];
-$deks = $_POST['deskripsi'];
-$date = $_POST['date'];
 include 'connect.php';
 
-$input = "INSERT INTO chalengge (nama_challenge, poin_challenge, deskripsi_challenge, date_challenge) VALUES('$nama', '$poin', '$deks', '$date')";
+//VARIABEL
+$eventname = $_POST['nama'];
+$eventpoin = $_POST['poin'];
+$eventinfo = $_POST['deskripsi'];
+$eventdate = $_POST['date'];
 
-$proses = mysqli_query($koneksi, $input);
+$syntaks = "INSERT INTO challenge (nama, poin, deskripsi, date) VALUES ('$eventname', '$eventpoin', '$eventinfo', '$eventdate')";
+$proces = mysqli_query($koneksi, $syntaks);
 
-if($proses) {
-    echo 'Event berhasil ditambahkan';
+if($proces) {
+    echo json_encode([
+        "status" => "success",
+        "message" => "SUKSES MENAMBAHKAN EVENT"
+    ]);
 } else {
-   echo "Event gagal";
+    echo json_encode([
+        "status" => "gagal",
+        "message" => "GAGAL MENAMBAHKAN" . mysqli_error($koneksi)
+    ]);
 }
+
+
 ?>

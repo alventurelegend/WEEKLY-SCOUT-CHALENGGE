@@ -7,7 +7,7 @@ function displayPointHistory(data) {
 
   if (data.length === 0) {
     pointHistoryList.innerHTML =
-      '<div class="no-data-message">Fitur Poin akan segera hadir...</div>';
+      '<div class="no-data-message">Riwayat Poin akan segera hadir...</div>';
     return;
   }
 

@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Admin Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
     <link rel="icon" href="../../public/asset/WcsLogo.png" />
   </head>
   <body class="bg-gray-100 te xt-gray-800 min-h-screen flex flex-col">
@@ -50,8 +53,8 @@
             <i class="fas fa-calendar-alt"></i> Event Controlled
           </button>
           <button
-            onclick="showSection('leaderboard')"
-            class="flex items-center gap-2 w-full text-left hover:bg-cyan-600 p-2 rounded"
+            onclick="window.location.href='leaderboard.html'"
+            class="leaderboard items-center gap-2 w-full text-left hover:bg-cyan-600 p-2 rounded"
           >
             <i class="fas fa-trophy"></i> Leaderboard
           </button>
@@ -90,12 +93,16 @@
                   <th class="p-2">Aksi</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr class="text-center">
-                  <td class="p-4" colspan="4">Belum ada data user.</td>
-                </tr>
-              </tbody>
+              <tbody id="user-table-body"></tbody>
+              </div>
             </table>
+            <div class="mt-4 text-center">
+                <button
+                  id="show-more-btn"
+                  class="bg-blue-500 text-white px-4 py-2 rounded hidden"
+                >
+                  Show More
+                </button>
           </div>
         </section>
 
@@ -113,8 +120,7 @@
               Baru
             </h3>
             <form
-              class="grid grid-cols-1 md:grid-cols-2 gap-4"
-              action="eventadd.php"
+              class="addevent grid grid-cols-1 md:grid-cols-2 gap-4"
               method="POST"
             >
               <input
@@ -158,13 +164,7 @@
                   <th class="p-2">Aksi</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr class="text-center">
-                  <td class="p-2">Belum ada event berlangsung.</td>
-                  <td class="p-2"></td>
-                  <td class="p-2"></td>
-                </tr>
-              </tbody>
+              <tbody id="event-table-body"></tbody>
             </table>
           </div>
 
@@ -190,27 +190,6 @@
         </section>
 
         <!-- Leaderboard -->
-        <section id="leaderboard" class="section hidden">
-          <h2 class="text-2xl font-semibold mb-4">
-            <i class="fas fa-trophy text-yellow-500 mr-2"></i>Leaderboard
-          </h2>
-          <div class="bg-white p-6 rounded shadow">
-            <table class="min-w-full text-left border">
-              <thead class="bg-gray-100">
-                <tr>
-                  <th class="p-2">#</th>
-                  <th class="p-2">Username</th>
-                  <th class="p-2">Poin</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr class="text-center">
-                  <td class="p-4" colspan="3">Belum ada data leaderboard.</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </section>
       </main>
     </div>
 
@@ -240,7 +219,7 @@
     </footer>
 
     <!-- Script -->
-    <script src="../../public/js/admin.js
-        "></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.1/dist/sweetalert2.all.min.js"></script>
+    <script src="../../public/js/admin.js"></script>
   </body>
 </html>
