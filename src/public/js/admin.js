@@ -86,8 +86,6 @@ document.addEventListener("DOMContentLoaded", () => {
     .addEventListener("click", renderUserBatch);
 });
 
-
-
 //====================EVENT CONTROLER==================//
 const form = document.querySelector(".addevent");
 
@@ -106,8 +104,17 @@ form?.addEventListener("submit", function (e) {
       return res.json();
     })
     .then((data) => {
-      console.log("Respon dari PHP:", data);
-      if (data.status === "success") {
+      if (data.staus === "undeffined") {
+        Swal.fire({
+          icon: "error",
+          title: "Isi Semua data",
+          text: "Event baru gagal di tambahkan",
+          confirmButtonText: "OK",
+          timer: 1000,
+        });
+
+        this.reset();
+      } else if (data.status === "success") {
         Swal.fire({
           icon: "success",
           title: "Event Baru",
@@ -155,11 +162,12 @@ function loadEvents() {
       data.forEach((event) => {
         const tr = document.createElement("tr");
         tr.setAttribute("data-id", event.id_challenge); // buat baris bisa dikenali
-        tr.innerHTML = `
-          <td class="p-2">${event.nama}</td>
+        tr.innerHTML = ` 
+          <td class="p-2">${event.id}</td>
+          <td class="p-2">${event.title}</td>
           <td class="p-2">${event.date}</td>
           <td class="p-2">
-            <button class="bg-red-500 text-white px-2 py-1 rounded" onclick="hapusEvent(${event.id_challenge}, this)">Hapus</button>
+            <button class="bg-red-500 text-white px-2 py-1 rounded" onclick="hapusEvent(${event.id}, this)">Hapus</button>
           </td>
         `;
         tbody.appendChild(tr);
@@ -171,3 +179,47 @@ function loadEvents() {
 }
 
 document.addEventListener("DOMContentLoaded", loadEvents);
+
+//SETTINGAN UNTUK BUTTON DELETE
+function hapusEvent(id, button) {
+  console.log("Menghapus ID:", id);
+  Swal.fire({
+    title: "Yakin ingin menghapus?",
+    text: "Data tidak dapat dikembalikan setelah dihapus!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#e3342f",
+    cancelButtonColor: "#6c757d",
+    confirmButtonText: "Ya, Hapus!",
+    cancelButtonText: "Batal",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      fetch("../../../api/delete.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: `id=${id}`,
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("RESPON DARI BACKEND:", data); 
+
+          if (data.status === "success") {
+            Swal.fire("Terhapus!", "Data berhasil dihapus.", "success");
+            const row = button.closest("tr");
+            if (row) row.remove();
+          } else {
+            Swal.fire(
+              "Gagal",
+              data.message || "Gagal menghapus data.",
+              "error"
+            );
+          }
+        })
+
+        .catch((error) => {
+          console.error("Gagal menghapus:", error);
+          Swal.fire("Error", "Terjadi kesalahan saat menghapus.", "error");
+        });
+    }
+  });
+}

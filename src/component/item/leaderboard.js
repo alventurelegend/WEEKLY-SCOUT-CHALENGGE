@@ -146,8 +146,8 @@ class LeaderboardDisplay extends HTMLElement {
       }
     }
   }
-  ////////////////////////////////////////////
-
+  
+  
   _renderLeaderboard(data) {
     const leaderboardList = this.shadowRoot.querySelector(".leaderboard-list");
     leaderboardList.innerHTML = ""; // Kosongkan list sebelum diisi

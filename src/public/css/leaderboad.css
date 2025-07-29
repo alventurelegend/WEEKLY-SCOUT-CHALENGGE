@@ -6,6 +6,7 @@
 body {
   background: linear-gradient(#00d9ff, #008299);
   font-family: "roboto", sans-serif;
+ height: 100vh;
 }
 
 .back-button {
@@ -29,6 +30,8 @@ footer {
   text-align: center;
   color: #6a6a6a;
   margin-top: 3rem;
+  position: fixed;
+  bottom: 0;
 }
 
 footer a {

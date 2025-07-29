@@ -1,60 +1,6 @@
-const dateStart = "August 19, 2025 07:00";
-const dateEnd = "August 30, 2025 00:00";
-
-const eventData = [
-  {
-    id: "WSC0001",
-    pts: 130,
-    title: "Content Creator",
-    description:
-      "Buatlah konten pramuka yang mengedukasi tentang bahaya nya narkoba",
-    expdate: `${dateStart} - ${dateEnd}`,
-  },
-  {
-    id: "WSC0001",
-    pts: 130,
-    title: "Content Creator",
-    description:
-      "Buatlah konten pramuka yang mengedukasi tentang bahaya nya narkoba",
-    expdate: `${dateStart} - ${dateEnd}`,
-  },
-  {
-    id: "WSC0001",
-    pts: 130,
-    title: "Content Creator",
-    description:
-      "Buatlah konten pramuka yang mengedukasi tentang bahaya nya narkoba",
-    expdate: `${dateStart} - ${dateEnd}`,
-  },
-  {
-    id: "WSC0001",
-    pts: 130,
-    title: "Content Creator",
-    description:
-      "Buatlah konten pramuka yang mengedukasi tentang bahaya nya narkoba",
-    expdate: `${dateStart} - ${dateEnd}`,
-  },
-  {
-    id: "WSC0001",
-    pts: 130,
-    title: "Content Creator",
-    description:
-      "Buatlah konten pramuka yang mengedukasi tentang bahaya nya narkoba",
-    expdate: `${dateStart} - ${dateEnd}`,
-  },
-  {
-    id: "WSC0001",
-    pts: 130,
-    title: "Content Creator",
-    description:
-      "Buatlah konten pramuka yang mengedukasi tentang bahaya nya narkoba",
-    expdate: `${dateStart} - ${dateEnd}`,
-  },
-];
-
-const EventSetCollection = document.getElementsByClassName("week-event");
-
 function displayEvent(data) {
+  const EventSetCollection = document.getElementsByClassName("week-event");
+
   if (EventSetCollection.length === 0) {
     console.error("Elemen dengan class 'week-event' tidak ditemukan.");
     return;
@@ -66,7 +12,7 @@ function displayEvent(data) {
 
   if (data.length === 0) {
     targetElement.innerHTML =
-      '<div class="no-data-message">Tidak ada riwayat poin yang tersedia.</div>';
+      '<div class="no-data-message" style="color:white;">Belum ada Event yang tersedia....</div>';
     return;
   }
 
@@ -76,13 +22,13 @@ function displayEvent(data) {
 
     eventSetting.innerHTML = `
             <div class="top-event">
-              <p id="idEvent">${item.id}</p>
-              <p id="pts">+${item.pts}</p>
+              <p id="idEvent">ID Chalengge : ${item.id}</p>
+              <p id="pts">+${item.poin}</p>
             </div>
             <div class="item-event">
               <h2>${item.title}</h2>
-              <p>${item.description}</p>
-              <span>${item.expdate}</span>
+              <p>${item.deskripsi}</p>
+              <span>${item.date}</span>
             </div>
         `;
 
@@ -91,5 +37,16 @@ function displayEvent(data) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  displayEvent(eventData);
+  fetch("../../../api/geteventadmin.php")
+    .then((res) => {
+      if (!res.ok) throw new Error("Gagal mengambil data dari server");
+      return res.json();
+    })
+    .then((data) => {
+      console.log("Data dari server:", data);
+      displayEvent(data);
+    })
+    .catch((err) => {
+      console.error("Terjadi kesalahan:", err);
+    });
 });

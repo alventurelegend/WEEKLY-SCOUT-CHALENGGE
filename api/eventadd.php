@@ -4,10 +4,19 @@ header("Content-Type: application/json");
 include 'connect.php';
 
 //VARIABEL
-$eventname = $_POST['nama'];
-$eventpoin = $_POST['poin'];
-$eventinfo = $_POST['deskripsi'];
-$eventdate = $_POST['date'];
+$eventname = trim($_POST['nama']);
+$eventpoin = trim($_POST['poin']);
+$eventinfo = trim($_POST['deskripsi']);
+$eventdate = trim($_POST['date']);
+
+//VALIDASI INPUT SEMUA TERISI
+if(empty($eventname) || empty($eventpoin) || empty($eventinfo) || empty($eventdate)){
+    echo json_encode([
+        "status" => "undeffined",
+        "message" => "isi semua form"
+    ]);
+    exit;
+};
 
 $syntaks = "INSERT INTO challenge (nama, poin, deskripsi, date) VALUES ('$eventname', '$eventpoin', '$eventinfo', '$eventdate')";
 $proces = mysqli_query($koneksi, $syntaks);

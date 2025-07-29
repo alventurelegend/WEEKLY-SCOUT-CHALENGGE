@@ -26,11 +26,20 @@ form.addEventListener("submit", function (e) {
         console.log("Menampilkan", localStorage);
         // SWALL FIRE
         Swal.fire({
-          icon: "success",
-          title: "Login Berhasil",
-          text: "Kamu akan segera berpindah halaman...",
-          confirmButtonText: "OK",
+          toast: true,
+          position: "center",
+          icon: "success", // bisa diganti 'info', 'error', atau hapus untuk clean
+          title: "Login Berhasil!",
+          showConfirmButton: false,
           timer: 2000,
+          timerProgressBar: true,
+          background: "#ffffff",
+          color: "#111827",
+          customClass: {
+            popup: "modern-toast",
+            title: "modern-title",
+            timerProgressBar: "modern-progress",
+          },
         }).then(() => {
           window.location.href =
             "../../component/page/dashboard.php?username=" +
@@ -40,17 +49,37 @@ form.addEventListener("submit", function (e) {
         this.reset();
       } else if (data.status === "passerror") {
         Swal.fire({
+          toast: true,
+          position: "center",
           icon: "error",
           title: "Password Salah",
-          text: "Silakan gunakan password yang valid",
-          confirmButtonText: "OK",
+          showConfirmButton: false,
+          timer: 1000,
+          timerProgressBar: true,
+          background: "#ffffff",
+          color: "#ce0000ff",
+          customClass: {
+            popup: "modern-toast",
+            title: "modern-title",
+            timerProgressBar: "modern-progress",
+          },
         });
       } else if (data.status === "EmailError") {
         Swal.fire({
+          toast: true,
+          position: "center",
           icon: "error",
-          title: "Email Not Found",
-          text: "Silakan gunakan Email yang valid",
-          confirmButtonText: "OK",
+          title: "Username Salah",
+          showConfirmButton: false,
+          timer: 1000,
+          timerProgressBar: true,
+          background: "#ffffff",
+          color: "#ce0000ff",
+          customClass: {
+            popup: "modern-toast",
+            title: "modern-title",
+            timerProgressBar: "modern-progress",
+          },
         });
       } else if (data.status === "admin") {
         const nameuser = nama.value;
@@ -58,11 +87,20 @@ form.addEventListener("submit", function (e) {
         console.log("Menampilkan", localStorage);
         // SWALL FIRE
         Swal.fire({
+          toast: true,
+          position: "center",
           icon: "success",
-          title: "Login Admin Berhasil",
-          text: "Kamu akan segera berpindah halaman...",
-          confirmButtonText: "OK",
+          title: "Welcome Admin",
+          showConfirmButton: false,
           timer: 2000,
+          timerProgressBar: true,
+          background: "#ffffff",
+          color: "#000000ff",
+          customClass: {
+            popup: "modern-toast",
+            title: "modern-title",
+            timerProgressBar: "modern-progress",
+          },
         }).then(() => {
           window.location.href = "../../component/page/admin.html";
         });
