@@ -4,6 +4,6 @@ this.nama = localStorage.getItem("namauser");
 if (Back) {
   addEventListener("click", () => {
     window.location.href =
-      "../../component/page/dashboard.php?username=" + encodeURIComponent(nama);
+      "../../../api/dashboard.php?username=" + encodeURIComponent(nama);
   });
 }

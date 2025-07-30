@@ -2,10 +2,8 @@ const nameuser = localStorage.getItem("namauser");
 const usernameElement = document.getElementById("username");
 
 if (nameuser) {
-  console.log("Selamat datang", nameuser);
-
-  if (nameuser === "admwitamsa") {
-    // Jika admin, arahkan ke halaman admin
+  if (nameuser === "alga") {
+    // Jika admin, arahkan kealga halaman admin
     window.location.href = "../../component/page/admin.html";
   } else {
     // Kalau bukan admin, tampilkan username
@@ -15,5 +13,5 @@ if (nameuser) {
   }
 } else {
   // Kalau belum login, arahkan ke halaman login
-  window.location.href = "../../component/page/login.html";
+  window.location.href = "../src/component/page/login.html";
 }

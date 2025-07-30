@@ -156,7 +156,7 @@ class Myheader extends HTMLElement {
       </style>
       <header id="main-header">
         <div class="logo">
-          <img src="../../public/asset/WcsLogo.png" alt="Logo" width="100px" />
+          <img src="../src/public/asset/WcsLogo.png" alt="Logo" width="100px"/>
           <div class="title">
             <h4>WEKLY SCOUT</h4>
             <h3>CHALENGGE</h3>
@@ -205,7 +205,7 @@ class Myheader extends HTMLElement {
               timer: 1500,
               timerProgressBar: true,
             }).then(() => {
-              window.location.href = "../../../src/index.html";
+              window.location.href = "../src/index.html";
             });
           } else {
             console.log("Pengguna membatalkan logout.");

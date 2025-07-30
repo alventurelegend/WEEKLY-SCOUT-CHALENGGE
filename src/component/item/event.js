@@ -37,7 +37,7 @@ function displayEvent(data) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  fetch("../../../api/geteventadmin.php")
+  fetch("../api/geteventadmin.php")
     .then((res) => {
       if (!res.ok) throw new Error("Gagal mengambil data dari server");
       return res.json();

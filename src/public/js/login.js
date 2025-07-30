@@ -42,7 +42,7 @@ form.addEventListener("submit", function (e) {
           },
         }).then(() => {
           window.location.href =
-            "../../component/page/dashboard.php?username=" +
+            "../../../api/dashboard.php?username=" +
             encodeURIComponent(nameuser);
         });
 
