@@ -31,7 +31,7 @@ let currentIndex = 0;
 const LIMIT = 5;
 
 function loadUser() {
-  fetch("../../../api/getuser.php")
+  fetch("https://wscsidoharjo.page.gd/getuser.php")
     .then((response) => response.json())
     .then((data) => {
       console.log("DATA DARI FETCH:", data);
@@ -95,7 +95,7 @@ form?.addEventListener("submit", function (e) {
 
   const formData = new FormData(this);
 
-  fetch("../../../api/eventadd.php", {
+  fetch("https://wscsidoharjo.page.gd/eventadd.php", {
     method: "POST",
     body: formData,
   })
@@ -145,7 +145,7 @@ form?.addEventListener("submit", function (e) {
 
 // ✅ FUNGSI AMBIL DAN TAMPILKAN EVENT
 function loadEvents() {
-  fetch("../../../api/geteventadmin.php")
+  fetch("https://wscsidoharjo.page.gd/geteventadmin.php")
     .then((response) => response.json())
     .then((data) => {
       const tbody = document.getElementById("event-table-body");
@@ -201,7 +201,7 @@ function hapusEvent(id, button) {
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log("RESPON DARI BACKEND:", data); 
+          console.log("RESPON DARI BACKEND:", data);
 
           if (data.status === "success") {
             Swal.fire("Terhapus!", "Data berhasil dihapus.", "success");

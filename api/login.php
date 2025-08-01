@@ -1,5 +1,7 @@
         <?php 
+            header("Access-Control-Allow-Origin: *");
             header("Content-Type: application/json");
+// .
 
             $logname = $_POST['loguser'];
             $logpass = $_POST['passlog'];

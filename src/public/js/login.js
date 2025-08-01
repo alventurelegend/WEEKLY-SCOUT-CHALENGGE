@@ -7,7 +7,7 @@ form.addEventListener("submit", function (e) {
   console.log("Form disubmit");
 
   const formData = new FormData(this);
-  fetch("../../../api/login.php", {
+  fetch("https://wscsidoharjo.page.gd/login.php", {
     method: "POST",
     body: formData,
   })
@@ -42,7 +42,7 @@ form.addEventListener("submit", function (e) {
           },
         }).then(() => {
           window.location.href =
-            "../../../api/dashboard.php?username=" +
+            "https://wscsidoharjo.page.gd/dashboard.php?username=" +
             encodeURIComponent(nameuser);
         });
 
