@@ -126,9 +126,7 @@ class LeaderboardDisplay extends HTMLElement {
 
     //CARA MEMASUKAN EVENT DARI DATABASE KE HTML
     try {
-      const response = await fetch(
-        "https://wscsidoharjo.page.gd/leaderboard.php"
-      );
+      const response = await fetch("../../../api/leaderboard");
       const data = await response.json();
 
       if (data.error) {
