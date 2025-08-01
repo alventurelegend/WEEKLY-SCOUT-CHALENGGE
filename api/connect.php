@@ -1,14 +1,14 @@
 <?php
-    $name = "localhost";
-    $user = "root";
-    $pass = "A12G1070709";
-    $database = "wekly_scout_chalengge";
+$host = "sql100.infinityfree.com";
+$user = "if0_39611070";
+$pass = "wsc111403"; // ← password baru kamu
+$dbname = "if0_39611070_wscsidoharjo";
 
-    $koneksi = mysqli_connect($name, $user, $pass, $database);
+$koneksi = mysqli_connect($host, $user, $pass, $dbname);
 
-    if($koneksi->connect_error) {
-         http_response_code(500);
-         echo json_encode(['error' => 'Database connection failed']);
-         exit;
-    }   
-?> 
+if (!$koneksi) {
+    die("Koneksi gagal: " . mysqli_connect_error());
+} else {
+    echo "Koneksi berhasil!";
+}
+?>
