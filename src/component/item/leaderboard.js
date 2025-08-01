@@ -127,7 +127,7 @@ class LeaderboardDisplay extends HTMLElement {
     //CARA MEMASUKAN EVENT DARI DATABASE KE HTML
     try {
       const response = await fetch(
-        "http://localhost/WEEKLY-SCOUT-CHALENGGE/api/leaderboard.php"
+        "https://wscsidoharjo.page.gd/leaderboard.php"
       );
       const data = await response.json();
 
@@ -146,8 +146,7 @@ class LeaderboardDisplay extends HTMLElement {
       }
     }
   }
-  
-  
+
   _renderLeaderboard(data) {
     const leaderboardList = this.shadowRoot.querySelector(".leaderboard-list");
     leaderboardList.innerHTML = ""; // Kosongkan list sebelum diisi
