@@ -1,10 +1,10 @@
 <?php 
 
 header("Access-Control-Allow-Headers: *");
-header("Access-Control-Allow-Origin: https://wsc-sidoharjo-25.vercel.app");
+header("Access-Control-Allow-Origin: https://wsc-sidoharjo-25.vercel.app/component/page/leaderboard.html");
 header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
 header("Content-Type: application/json");
-
+    
 include 'connect.php';
 $acces = 'user';
 
