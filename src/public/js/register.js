@@ -6,7 +6,7 @@ form.addEventListener("submit", function (e) {
 
   const formData = new FormData(this);
 
-  fetch("../../../api/registrasi.php", {
+  fetch("https://wscsidoharjo.page.gd/registrasi.php", {
     method: "POST",
     body: formData,
   })
